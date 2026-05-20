@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Debt Relief Replica</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #333c4e;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- STICKY HEADER --- */
+        .main-header {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px; /* Adjust based on your actual logo aspect ratio */
+            display: block;
+        }
+
+        .phone-button {
+            text-decoration: none;
+            color: #333c4e;
+            font-size: 18px;
+            font-weight: 700;
+            border: 1px solid #333c4e;
+            padding: 10px 25px;
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+
+        .phone-button:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 500;
+            color: #3e4a5e;
+            margin-bottom: 30px;
+        }
+
+        /* Benefit List */
+        .benefit-list {
+            list-style: none;
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .benefit-list li {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #333c4e;
+        }
+
+        .icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+        }
+
+        /* --- FORM STYLES --- */
+        .form-container {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .select-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 18px 20px;
+            font-size: 16px;
+            border: 2px solid #333c4e;
+            border-radius: 8px;
+            appearance: none; /* Removes default browser arrow */
+            background-color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333c4e;
+        }
+
+        /* Custom Dropdown Arrow styling */
+        .select-wrapper::after {
+            content: '▼';
+            font-size: 12px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #333c4e;
+            border-left: 1px solid #ccc;
+            padding-left: 15px;
+        }
+
+        .cta-button {
+            width: 100%;
+            background-color: #0066e2;
+            color: #fff;
+            border: none;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0056bd;
+        }
+
+        .subtext {
+            margin-top: 10px;
+            font-size: 14px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* --- TRUST & RATINGS STYLES --- */
+.trust-section {
+    margin-top: 60px;
+    padding-bottom: 40px;
+}
+
+.ratings-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* Allows stacking on smaller screens */
+}
+
+.rating-item {
+    text-align: center;
+}
+
+.brand-logo {
+    height: 35px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.stars img {
+    width: 20px; /* Adjust based on star icon size */
+    /* If using black icons, this filter turns them blue to match the screenshot */
+    filter: invert(27%) sepia(91%) saturate(2252%) hue-rotate(204deg) brightness(97%) contrast(105%);
+}
+
+.rating-item p {
+    font-size: 16px;
+    color: #333c4e;
+}
+
+/* --- PARTNERSHIP SECTION --- */
+.partnership-container {
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 40px;
+}
+
+.partner-logo {
+    max-width: 320px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.partner-text {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #333c4e;
+    text-transform: uppercase;
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .ratings-grid {
+        gap: 30px;
+    }
+    .hero-content h1 {
+        font-size: 32px;
+    }
+}
+
+/* --- How It Works Section Styling --- */
+
+/* Section Wrapper & Background */
+.how-it-works-section {
+  background-color: #F6F3EE; /* Precise warm off-white tint from screenshot */
+  padding: 80px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+/* Constrained inner container to match desktop layouts */
+.hiw-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+/* Main Heading */
+.hiw-main-title {
+  font-size: 2.5rem;
+  color: #1B2A4A; /* Deep navy blue */
+  font-weight: 600;
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+}
+
+/* Responsive Grid Layout */
+.hiw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* Individual Step Cards */
+.hiw-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* Icon Containers */
+.hiw-icon-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.hiw-icon {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Card Content Headings */
+.hiw-card-title {
+  font-size: 1.6rem;
+  color: #1B2A4A; /* Matching primary deep navy */
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 15px;
+  max-width: 320px; /* Keeps line breaks clean and balanced */
+}
+
+/* Card Paragraph Text */
+.hiw-card-text {
+  font-size: 1rem;
+  color: #2B384E; /* Softened dark blue/gray for perfect legibility */
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 992px) {
+  .hiw-grid {
+    grid-template-columns: 1fr; /* Stack columns on tablets and mobile screens */
+    gap: 50px;
+  }
+  
+  .hiw-main-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+
+/* --- FAQ Section Styling --- */
+
+/* Section Canvas */
+.faq-section {
+  background-color: #FFFFFF; /* Clean white canvas background */
+  padding: 80px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+/* Structural Container */
+.faq-container {
+  width: 100%;
+  max-width: 950px; /* Constrains the accordion width to match the desktop layout */
+  text-align: center;
+}
+
+/* Section Header */
+.faq-main-title {
+  font-size: 2.8rem;
+  color: #1B2A4A; /* Matching deep navy brand color */
+  font-weight: 700;
+  margin-bottom: 45px;
+  letter-spacing: -0.5px;
+}
+
+/* Accordion Vertical Stack */
+.faq-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Precise uniform spacing between rows */
+}
+
+/* Individual Accordion Row */
+.faq-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F0F2F6; /* Soft cool-gray tint for the rows */
+  padding: 22px 30px;
+  border-radius: 8px; /* Smoothly rounded outer edges */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Subtle hover interaction to improve UX */
+.faq-row:hover {
+  background-color: #E6E9EF; 
+}
+
+/* Question Styling */
+.faq-question {
+  color: #1B2A4A; /* Primary deep navy */
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-align: left;
+  padding-right: 20px; /* Prevents text from smashing into the icon on narrow viewports */
+  line-height: 1.4;
+}
+
+/* Icon Wrap Logic */
+.faq-icon-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Keeps the circular icon container from distorting */
+  width: 28px;
+  height: 28px;
+}
+
+.faq-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* --- Responsive Layout Rules --- */
+@media (max-width: 768px) {
+  .faq-main-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .faq-row {
+    padding: 18px 20px;
+  }
+  
+  .faq-question {
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Call To Action Section Styling --- */
+
+/* Canvas Wrapper */
+.cta-section {
+  background-color: #FFFFFF; /* White outer section space */
+  padding: 60px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The Central Framed Card */
+.cta-card {
+  background-color: #F6F3EE; /* Precise warm off-white fill from screenshot */
+  width: 100%;
+  max-width: 860px; /* Perfect desktop container width */
+  border-radius: 36px; /* Smooth, heavy corner rounding exactly like the screenshot */
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Icon Arrangement */
+.cta-icon-wrap {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cta-main-icon {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  width: 300px;
+}
+
+/* Heading Typography */
+.cta-title {
+  font-size: 2.4rem;
+  color: #1B2A4A; /* Signature deep navy color */
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  letter-spacing: -0.5px;
+}
+
+/* The High-Contrast Phone Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* Uniform space between the phone icon and the phone digits */
+  background-color: #0066E2; /* High-conversion vivid blue */
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 8px; /* Standard clean button edges */
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Smooth hover & click feedback */
+.cta-button:hover {
+  background-color: #0052B5; /* Deepens slightly on hover */
+}
+
+.cta-button:active {
+  transform: scale(0.98); /* Subtle physical press effect */
+}
+
+/* Inline Button Icon Styling */
+.cta-btn-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .cta-card {
+    padding: 45px 25px;
+    border-radius: 24px; /* Slightly lower radius for smaller screens to maximize space */
+  }
+  
+  .cta-title {
+    font-size: 1.85rem;
+    margin-bottom: 25px;
+  }
+  
+  .cta-button {
+    font-size: 1.15rem;
+    padding: 12px 28px;
+    width: 100%; /* Spans full width gracefully on narrow mobile devices */
+    max-width: 290px;
+  }
+}
+
+/* --- Real Results Section Styling --- */
+
+/* Deep Canvas Base Layout */
+.results-section {
+  background-color: #13192B; /* Deep premium midnight navy */
+  padding: 80px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.results-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Master Centered Heading */
+.results-main-title {
+  color: #FFFFFF;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  letter-spacing: -0.5px;
+}
+
+/* Responsive Columns Frame */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Structural White Grid Cards */
+.result-card {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  overflow: hidden; /* Ensures image corners match card border radius layout */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Card Image Sizing Logic */
+.result-image-holder {
+  width: 100%;
+  height: 220px; /* Locked desktop height aspect aspect ratio */
+  overflow: hidden;
+  background-color: #E5E7EB;
+}
+
+.result-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops photos dynamically without stretching profiles */
+}
+
+/* Text Content Dynamic Box */
+.result-content {
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes the data bars down evenly across all cards */
+}
+
+/* Context Meta Tagline */
+.result-meta {
+  font-size: 0.8rem;
+  color: #6B7280;
+  margin: 0 0 15px 0;
+  line-height: 1.4;
+}
+
+/* Testimonial Quote Frame */
+.result-quote {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.5;
+  margin: 0 0 35px 0;
+  padding: 0;
+  flex-grow: 1; /* Drives visual uniformity across columns */
+}
+
+/* Financial Matrix Base Footer */
+.result-stats-row {
+  display: flex;
+  border-top: 1px solid #E5E7EB;
+  padding-top: 20px;
+  justify-content: space-between;
+}
+
+.stat-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subtle separator bars between stats */
+.stat-column:not(:last-child) {
+  border-right: 1px solid #E5E7EB;
+  padding-right: 10px;
+}
+
+.stat-column:not(:first-child) {
+  padding-left: 15px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6B7280;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Vivid Conversion Highlight Accent */
+.stat-value.highlight-blue {
+  color: #0066E2; 
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 1024px) {
+  .results-grid {
+    grid-template-columns: 1fr; /* Stacks column architecture cleanly for phones/tablets */
+    gap: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .results-main-title {
+    font-size: 1.85rem;
+    margin-bottom: 40px;
+  }
+  
+  .result-image-holder {
+    height: 250px;
+  }
+}
+/* --- Footnote Disclaimer Styling --- */
+.results-footnote {
+  color: #fff; /* Clean, legible muted gray/white text against the dark background */
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 50px; /* Gives the white cards plenty of room to breathe exactly like the screenshot */
+  margin-bottom: 0;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+}
+
+/* --- Mobile Breakpoint Adjustment --- */
+@media (max-width: 1024px) {
+  .results-footnote {
+    font-size: 0.8rem;
+    margin-top: 35px; /* Pulls up slightly on mobile for tighter screens */
+    padding: 0 15px;  /* Prevents text clipping on narrow viewports */
+  }
+}
+
+/* --- Trust Badges Ribbon Styling --- */
+
+/* Section Canvas Container */
+.trust-badges-section {
+  background-color: #FFFFFF; /* High-contrast crisp white background */
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Flex Container for Inline Logo Distribution */
+.trust-container {
+  width: 100%;
+  max-width: 1100px; /* Perfectly frames the row on widescreen desktop viewports */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px; /* Uniform horizontal breathing space between trust assets */
+}
+
+/* Individual Badge Frame Logic */
+.trust-badge-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevents logos from shrinking abnormally when the viewport narrows */
+}
+
+/* Universal Logo Scaling Rules */
+.trust-logo {
+  max-height: 55px; /* Hard upper boundary to normalize different logo heights natively */
+  width: auto;       /* Maintains perfectly balanced aspect ratios automatically */
+  object-fit: contain;
+  filter: grayscale(0%); /* Keeps brand asset colors vivid */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Subtle modern interactivity layer */
+.trust-logo:hover {
+  opacity: 0.85;
+}
+
+/* --- Mobile & Tablet Layout Flow --- */
+@media (max-width: 860px) {
+  .trust-container {
+    gap: 40px; /* Pulls elements slightly closer together on standard tablet dimensions */
+  }
+  
+  .trust-logo {
+    max-height: 45px; /* Scales down heights slightly to prevent asset crowding */
+  }
+}
+
+@media (max-width: 600px) {
+  .trust-container {
+    flex-direction: column; /* Vertical alignment conversion for zero horizontal crowding */
+    gap: 35px;
+    padding: 10px 0;
+  }
+  
+  .trust-logo {
+    max-height: 50px; /* Restores standalone visual presence inside the stack */
+  }
+}
+
+/* --- Master Site Footer Styling --- */
+
+/* Outer Canvas Layout */
+.site-footer {
+  background-color: #F6F3EE; /* Matching warm off-white canvas profile */
+  padding: 60px 20px 40px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #EAE6DF; /* Subtle alignment line breaking sections cleanly */
+}
+
+/* Structural Max-Width Frame */
+.footer-container {
+  width: 100%;
+  max-width: 1160px; /* Constrains dense copy text layout elegantly */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centered Top Logo Row */
+.footer-logo-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.footer-logo {
+  max-height: 65px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Left-aligned Content Grid Block */
+.footer-legal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Strict uniform layout spacing between text blocks */
+  margin-bottom: 50px;
+}
+
+/* Primary Copyright Callout */
+.footer-copyright {
+  color: #1B2A4A; /* Iconic signature brand deep navy */
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.1px;
+}
+
+/* Compliance Disclaimer Paragraph Blocks */
+.footer-disclaimer {
+  color: #2B384E; /* Highly legible soft slate blue-gray */
+  font-size: 0.825rem; /* Clean professional compact typesetting */
+  line-height: 1.6; /* Optimal readability ratio for fine print blocks */
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+}
+
+/* Inline Dynamic Underlined Links */
+.footer-text-link {
+  color: #2B384E;
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out;
+}
+
+.footer-text-link:hover {
+  color: #0066E2; /* Accent flash on interactive items */
+}
+
+/* Centered Base Navigation Links */
+.footer-nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px; /* Roomy inline separation spacing */
+  border-top: 1px solid #EAE6DF;
+  padding-top: 30px;
+  flex-wrap: wrap; /* Gracefully breaks down to columns on small viewports */
+}
+
+.footer-nav-item {
+  color: #1B2A4A; /* Signature deep navy */
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out;
+}
+
+.footer-nav-item:hover {
+  color: #0066E2;
+}
+
+/* --- Responsive Layout Configurations --- */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 45px 15px 30px 15px;
+  }
+
+  .footer-logo-row {
+    margin-bottom: 35px;
+  }
+
+  .footer-disclaimer {
+    font-size: 0.775rem; /* Shrunk slightly on mobile viewport boundaries */
+    line-height: 1.5;
+  }
+
+  .footer-nav-links {
+    gap: 15px;
+    padding-top: 25px;
+  }
+
+  .footer-nav-item {
+    font-size: 0.95rem;
+  }
+}
+
+/* --- Footer Contact Utility Bar Styling --- */
+
+/* Base Section Strip Canvas */
+.footer-utility-bar {
+  background-color: #13192B; /* Precise matching midnight corporate navy blue */
+  padding: 24px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Flex Framework wrapper to drive elements to outer edges */
+.utility-container {
+  width: 100%;
+  max-width: 1160px; /* Perfectly standard desktop layout grid alignment */
+  display: flex;
+  justify-content: space-between; /* Drives items to opposite poles natively */
+  align-items: center;
+}
+
+/* Left-Side Phone Layout Element */
+.utility-phone {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between inline image element and phone string */
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700; /* Rich thick typography profile from screenshot */
+  transition: opacity 0.15s ease-in-out;
+}
+
+.utility-phone:hover {
+  opacity: 0.85; /* Subtle interaction indicator */
+}
+
+/* Inline Phone Icon sizing control */
+.utility-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* Right-Side Headquarters Typography Block */
+.utility-address {
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  font-weight: 700; /* Rich font-weight identical to phone text */
+  text-align: right;
+  letter-spacing: -0.1px;
+}
+
+/* --- Mobile Stack Viewport Conversions --- */
+@media (max-width: 768px) {
+  .footer-utility-bar {
+    padding: 20px 15px;
+  }
+
+  .utility-container {
+    flex-direction: column; /* Shifts row architecture to a stacked column array on phones */
+    gap: 12px;             /* Clean uniform vertical spacing when elements layer */
+    justify-content: center;
+  }
+  
+  .utility-phone {
+    font-size: 0.95rem;
+  }
+  
+  .utility-address {
+    text-align: center;    /* Balances spatial gravity perfectly on mobile viewports */
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="https://images.ctfassets.net/5xdc9rzhmhnq/7dU3zpifpVyl0UbSvpEtn1/a0dbc187952576ca718c10772d1b0f4b/Type_Vertical__Color_Full_color.svg" alt="National Debt Relief Logo">
+            </div>
+            <div class="contact">
+                <a href="tel:888-666-8450" class="phone-button">888-666-8450</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero-section">
+        <div class="container hero-content">
+            <h1>Get Debt Relief</h1>
+
+            <ul class="benefit-list">
+                <li>
+                    <img src="https://start.nationaldebtrelief.com/assets/icons/checkmark.svg" class="icon" alt="check">
+                    Pay Up To 45% Less Than You Owe*
+                </li>
+                <li>
+                    <img src="https://start.nationaldebtrelief.com/assets/icons/checkmark.svg" class="icon" alt="check">
+                    Debt Free In As Little As 24-48 Months*
+                </li>
+                <li>
+                    <img src="https://start.nationaldebtrelief.com/assets/icons/checkmark.svg" class="icon" alt="check">
+                    Free Consultation and Zero Up-Front Fees
+                </li>
+            </ul>
+
+            <div class="form-container">
+                <div class="select-wrapper">
+                    <select id="debt-amount">
+                        <option value="" disabled selected>How Big Is Your Debt?</option>
+                        <option value="10k">$10,000 - $20,000</option>
+                        <option value="20k">$20,000 - $50,000</option>
+                        <option value="50k">$50,000+</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="cta-button">See if You Qualify</button>
+                <p class="subtext">Subject to terms of program</p>
+            </div>
+        </div>
+
+<section class="trust-section">
+    <div class="ratings-grid">
+        <div class="rating-item">
+            <img src="https://start.nationaldebtrelief.com/assets/google.svg" alt="Google Logo" class="brand-logo">
+            <div class="stars">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/2107/2107737.png" alt="half-star">
+            </div>
+            <p><strong>4.6</strong> - 13,000+ Reviews</p>
+        </div>
+
+        <div class="rating-item">
+            <img src="https://via.placeholder.com/150x40?text=ConsumerAffairs" alt="Consumer Affairs Logo" class="brand-logo">
+            <div class="stars">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+            </div>
+            <p><strong>4.9</strong> - 58,000+ Reviews</p>
+        </div>
+
+        <div class="rating-item">
+            <img src="https://via.placeholder.com/120x40?text=Trustpilot" alt="Trustpilot Logo" class="brand-logo">
+            <div class="stars">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="star">
+                <img src="https://cdn-icons-png.flaticon.com/512/2107/2107737.png" alt="half-star">
+            </div>
+            <p><strong>4.7</strong> - 44,000+ Reviews</p>
+        </div>
+    </div>
+
+    <div class="partnership-container">
+        <img src="https://images.ctfassets.net/5xdc9rzhmhnq/2UPoZ4BhG3JytnEVkBpaf1/53e26922ee781d8aab18b5096c09808a/Reviews__Labels__Partners.svg" alt="Official NASCAR Partner" class="partner-logo">
+        <p class="partner-text">OFFICIAL DEBT RELIEF PARTNER</p>
+    </div>
+</section>
+
+
+<section class="how-it-works-section">
+  <div class="hiw-container">
+    
+    <h2 class="hiw-main-title">How It Works</h2>
+    
+    <div class="hiw-grid">
+      
+      <div class="hiw-card">
+        <div class="hiw-icon-container">
+          <img src="https://images.ctfassets.net/5xdc9rzhmhnq/6zztlrO7x0vpEjIAau5nWD/e65be82c8f2f740292830b2aa09c3285/chat.svg" alt="Chat bubbles icon" class="hiw-icon">
+        </div>
+        <h3 class="hiw-card-title">Submit The Form For A Free Consultation</h3>
+        <p class="hiw-card-text">We’ll call you in the next few minutes to talk about your options.</p>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-icon-container">
+          <img src="https://start.nationaldebtrelief.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F5xdc9rzhmhnq%2F1ZV5uXbebRQ2lKb4QVxFHj%2F381df6aa70a835e751a1b49918e279e2%2Fcalculator.png%3Fw%3D56%26fm%3Dwebp%26fit%3Dfill&w=128&q=75" alt="Calculator icon" class="hiw-icon">
+        </div>
+        <h3 class="hiw-card-title">We Build An Affordable Plan That Works For You</h3>
+        <p class="hiw-card-text">Custom fit for your personal budget and individual timeline.</p>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-icon-container">
+          <img src="https://start.nationaldebtrelief.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F5xdc9rzhmhnq%2F4V4cDmbaqUXTUgJXR581xw%2F0bd392c0ea0730f02c8f7c76415fe7e0%2Fcoin.png%3Fw%3D56%26fm%3Dwebp%26fit%3Dfill&w=128&q=75" alt="Coins and growth arrow icon" class="hiw-icon">
+        </div>
+        <h3 class="hiw-card-title">You Get Out Of Debt Faster For Less Than You Owe</h3>
+        <p class="hiw-card-text">You could be debt free in as little as 24-48 months.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-container">
+    
+    <h2 class="faq-main-title">FAQ</h2>
+    
+    <div class="faq-wrapper">
+      
+      <div class="faq-row">
+        <span class="faq-question">Why Trust National Debt Relief?</span>
+        <div class="faq-icon-holder">
+          <img src="https://start.nationaldebtrelief.com/assets/accordion-closed.svg" alt="Expand icon" class="faq-icon">
+        </div>
+      </div>
+
+      <div class="faq-row">
+        <span class="faq-question">What Makes Me A Good Candidate for Debt Relief?</span>
+        <div class="faq-icon-holder">
+          <img src="https://start.nationaldebtrelief.com/assets/accordion-closed.svg" alt="Expand icon" class="faq-icon">
+        </div>
+      </div>
+
+      <div class="faq-row">
+        <span class="faq-question">How Does Debt Relief Work?</span>
+        <div class="faq-icon-holder">
+          <img src="https://start.nationaldebtrelief.com/assets/accordion-closed.svg" alt="Expand icon" class="faq-icon">
+        </div>
+      </div>
+
+      <div class="faq-row">
+        <span class="faq-question">Can I Afford This?</span>
+        <div class="faq-icon-holder">
+          <img src="https://start.nationaldebtrelief.com/assets/accordion-closed.svg" alt="Expand icon" class="faq-icon">
+        </div>
+      </div>
+
+      <div class="faq-row">
+        <span class="faq-question">What Type Of Debt Does National Debt Relief Work With?</span>
+        <div class="faq-icon-holder">
+          <img src="https://start.nationaldebtrelief.com/assets/accordion-closed.svg" alt="Expand icon" class="faq-icon">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-card">
+    
+    <div class="cta-icon-wrap">
+      <img src="https://images.ctfassets.net/5xdc9rzhmhnq/6ocBoDUdYN5SFkmVsqM8Sc/bb99c34fca2188d45553013a7f5984a4/Messages_People-2.svg" alt="Support agent icon" class="cta-main-icon">
+    </div>
+
+    <h2 class="cta-title">Still have questions?</h2>
+
+    <a href="tel:8882515205" class="cta-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+      888-251-5205
+    </a>
+
+  </div>
+</section>
+
+<section class="results-section">
+  <div class="results-container">
+    
+    <h2 class="results-main-title">
+      We Deliver Real Results: 9 Out Of 10 Achieved Better Financial Outcomes With National Debt Relief.*
+    </h2>
+    
+    <div class="results-grid">
+      
+      <div class="result-card">
+        <div class="result-image-holder">
+          <img src="images/1.webp" alt="Michelle V." class="result-img">
+        </div>
+        <div class="result-content">
+          <p class="result-meta">Michelle V., Military college advisor, single mother of 2</p>
+          <blockquote class="result-quote">
+            "The anxiety is gone. I am credit card debt free. And that right there, I never thought I would be able to say those words, and it just feels so good."
+          </blockquote>
+          <div class="result-stats-row">
+            <div class="stat-column">
+              <span class="stat-label">Total Debt</span>
+              <span class="stat-value">$19,164</span>
+            </div>
+            <div class="stat-column">
+              <span class="stat-label">Monthly Payment</span>
+              <span class="stat-value">$398</span>
+            </div>
+            <div class="stat-column">
+              <span class="stat-label">Savings</span>
+              <span class="stat-value highlight-blue">23%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-image-holder">
+          <img src="images/2.webp" alt="Eric H." class="result-img">
+        </div>
+        <div class="result-content">
+          <p class="result-meta">Eric H., Government contractor, Harley enthusiast</p>
+          <blockquote class="result-quote">
+            "I've been in a combat environment, and there you have a team ... National Debt Relief started working with me and suddenly, I had my team. I had my support structure to push myself forward."
+          </blockquote>
+          <div class="result-stats-row">
+            <div class="stat-column">
+              <span class="stat-label">Total Debt</span>
+              <span class="stat-value">$47,519</span>
+            </div>
+            <div class="stat-column">
+              <span class="stat-label">Monthly Payment</span>
+              <span class="stat-value">$765</span>
+            </div>
+            <div class="stat-column">
+              <span class="stat-label">Savings</span>
+              <span class="stat-value highlight-blue">37%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-image-holder">
+          <img src="images/3.webp" alt="Lindsay H." class="result-img">
+        </div>
+        <div class="result-content">
+          <p class="result-meta">Lindsay H., Working, single mom</p>
+          <blockquote class="result-quote">
+            "I was just one of those people who kept waiting, thinking there would be a solution next month. And I wish I would've called sooner."
+          </blockquote>
+          <div class="result-stats-row">
+            <div class="stat-column">
+              <span class="stat-label">Total Debt</span>
+              <span class="stat-value">$32,693</span>
+            </div>
+            <div class="stat-column">
+              <span class="stat-label">Monthly Payment</span>
+              <span class="stat-value">$506</span>
+            </div>
+            <div class="stat-column">
+              <span class="stat-label">Savings</span>
+              <span class="stat-value highlight-blue">29%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="results-footnote">*Surveyed Respondents of National Debt Relief Graduate Study 2025</p>
+  </div>
+</section>
+
+<section class="trust-badges-section">
+  <div class="trust-container">
+    
+    <div class="trust-badge-card">
+      <img src="https://images.ctfassets.net/5xdc9rzhmhnq/2UPoZ4BhG3JytnEVkBpaf1/53e26922ee781d8aab18b5096c09808a/Reviews__Labels__Partners.svg" alt="Official Debt Relief Partner of NASCAR" class="trust-logo">
+    </div>
+
+    <div class="trust-badge-card">
+      <img src="https://images.ctfassets.net/5xdc9rzhmhnq/5MaCmUSszsIuZydTqJFDFx/22f615f7c42663dec38ce1bc907afb12/Type_Trustpilot.svg" alt="Trustpilot 5-Star Rating" class="trust-logo">
+    </div>
+
+    <div class="trust-badge-card">
+      <img src="https://images.ctfassets.net/5xdc9rzhmhnq/71WWsXsaouiMmzagP133Ib/ef38322fc65a6bcccdcc5a8dabdbee21/Type_bbb.svg" alt="BBB Accredited Business A+ Rating" class="trust-logo">
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    
+    <div class="footer-logo-row">
+      <img src="https://start.nationaldebtrelief.com/assets/logo-large.svg" alt="National Debt Relief Logo" class="footer-logo">
+    </div>
+
+    <div class="footer-legal-content">
+      
+      <p class="footer-copyright">© 2026, National Debt Relief, All Rights Reserved.</p>
+      
+      <p class="footer-disclaimer">
+        Please note that all calls with the company may be recorded or monitored for quality assurance and training purposes. *Clients who are able to stay with the program and get all their debt settled realize approximate savings of 45% before fees, or 20% including our fees, over 24 to 48 months. All claims are based on enrolled debts. Not all debts are eligible for enrollment. Not all clients complete our program for various reasons, including their ability to save sufficient funds. Estimates based on prior results, which will vary based on specific circumstances. We do not guarantee that your debts will be lowered by a specific amount or percentage or that you will be debt-free within a specific period of time. We do not assume consumer debt, make monthly payments to creditors or provide tax, bankruptcy, accounting or legal advice or credit repair services. Not available in all states. Participation may adversely affect your credit rating or score. Nonpayment of debt may result in increased finance and other charges, collection efforts, or litigation. Please contact a tax professional to discuss tax consequences of settlement. Please consult with a bankruptcy attorney for more information on bankruptcy. Depending on your state, we may be available to recommend a local tax professional and/or bankruptcy attorney. Read and understand all program materials prior to enrollment, including potential adverse impact on credit rating.
+      </p>
+      
+      <p class="footer-disclaimer">
+        This website uses "cookies" to enhance your browsing experience and for marketing and tracking purposes. By continuing to browse our site you are consenting to their use. For more information see our Terms and Privacy Policy.
+      </p>
+      
+      <p class="footer-disclaimer">
+        <a href="#" class="footer-text-link">State-Specific Disclosures and Licenses</a>
+      </p>
+      
+      <p class="footer-disclaimer">
+        National Debt Relief LLC, Nationwide Multistate Licensing System ("NMLS") ID 1250950
+      </p>
+
+    </div>
+
+    <div class="footer-nav-links">
+      <a href="#" class="footer-nav-item">Privacy Policy</a>
+      
+      <a href="#" class="footer-nav-item">Privacy Notice</a>
+      
+      <a href="#" class="footer-nav-item">Terms of Site</a>
+      
+      <a href="#" class="footer-nav-item">Disclaimer</a>
+    </div>
+
+  </div>
+</footer>
+<section class="footer-utility-bar">
+  <div class="utility-container">
+    
+    <a href="tel:8883551114" class="utility-phone">
+      <img src="https://via.placeholder.com/16" alt="Phone contact icon" class="utility-icon">
+      888-355-1114
+    </a>
+    
+    <div class="utility-address">
+      180 Maiden Lane, 28th Floor, New York, NY 10038
+    </div>
+
+  </div>
+</section>
+    </main>
+</body>
+</html>
